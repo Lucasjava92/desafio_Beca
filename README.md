@@ -2,20 +2,21 @@
 <ul type = circle>
 <li>Nome: Lucas da Silva Santos</li>
 <li>E-mail: lucas.dasilvasantos@everis.nttdata.com </li>
-<li>Projeto Desafio Banco </li>
+<li>Projeto Desafio Banco</li>
 </ul>
 <h4> Projeto do Desafio 1 Programação Orientado a Objeto, escolhido pelo diagrama do Banco, onde mostra a estrutura e bem simplificado o conceito de funcionamento com uma caixa eletrônica, na hora de operar com o sistema de acordo com o modelo de esquema de uso, onde o cliente escolhe alternativa de sacar, ou depositar ou consultar, com os requisitos de passo a passo pela sequência do fluxo.
 </h4>
-<h3>
-Linguagem e Software utilizado no projeto:
-</h3>
+<h3>Linguagem e Software utilizado no projeto:</h3>
 <li>Java</li>
+<li>IDE Eclipse</li>
 <li>GitHub</li>
 <li>Spring Boot</li>
 <li>Diagrama.Dawio</li>
-<h3>Desafio 
+<li>Banco de Dados H2</li>
+<li>JPA</li>
+<br>
 <h2> Diagrama Modelo Conceitual</h2>
-<img src= git git"![Diagrama Conceitual java](https://user-images.githubusercontent.com/86928030/151684097-ed1a1afc-d781-4475-80e6-328e76a70f42.png)">
+<img width="548" alt="Diagrama Conceitual Beca" src="https://user-images.githubusercontent.com/86928030/151684321-4529dbd4-de88-4cc4-b7f2-4e9ffadfe4bf.png">
 
 <h4>Desafio 1</h4>
 Seu objetivo durante o desafio 1 deve ser entender o conceito de POO. Crie uma modelagem e um pequeno resumo sobre oque será baseada sua API.
