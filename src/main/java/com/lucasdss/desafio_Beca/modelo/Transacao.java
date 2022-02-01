@@ -3,17 +3,32 @@ package com.lucasdss.desafio_Beca.modelo;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+@Entity
 public class Transacao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+    
+	@Id
+	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long idTransacao;
 	
+	@ManyToOne()
 	private Conta conta;
 	
+	@Column
 	private double valor;
 	
+	@Temporal (TemporalType.TIMESTAMP)
+	@Column
 	private Date dataTransacao;
 	
 	
@@ -42,6 +57,7 @@ public class Transacao implements Serializable {
 		this.dataTransacao = dataTransacao;
 	}
 
+	@Override
 	public int hashCode() {
 		final int linha = 31;
 		int resultado = 1;
@@ -49,6 +65,7 @@ public class Transacao implements Serializable {
 		return resultado;
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
