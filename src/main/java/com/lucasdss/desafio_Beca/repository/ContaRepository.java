@@ -11,14 +11,14 @@ import com.lucasdss.desafio_Beca.modelo.Conta;
 public interface ContaRepository extends JpaRepository<Conta, Long> {
 	
 	@Modifying
-	@Query("update Conta c set c.saldo = c.saldo + ? 1 onde c.idConta = ?2 ")
+	@Query("Conta c set c.saldo = c.saldo + ? 1 onde c.idConta = ?2 ")
 	void setFixedSaldoFor(double quantidade, Long id);
 	
 	Conta findByIdConta (Long id);
 	
 	@Modifying
-	@Query(" update Conta c set c.saldo = c.saldo - ? 1 onde c.idConta = ?2 ")
-	void  setFixedSaldo (double quant, Long id);
+	@Query("Conta c set c.saldo = c.saldo - ? 1 onde c.idConta = ?2 ")
+	void  setFixedSaldo (double quantidade, Long id);
 	
 	
 

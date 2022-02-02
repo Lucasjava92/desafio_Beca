@@ -3,6 +3,8 @@ package com.lucasdss.desafio_Beca.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,14 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lucasdss.desafio_Beca.modelo.Pessoa;
+import com.lucasdss.desafio_Beca.service.implementacao.PessoaService;
 
 @RestController
 @RequestMapping ("/pessoa")
 
 public class PessoaController {
 	
+	@Autowired
+	private PessoaService pessoaService;
+	
 	@PostMapping
-	 public ResponseEntity<Pessoa>salvar(@RequestBody Pessoa pessoa){
+	 public ResponseEntity<Pessoa>criar(@RequestBody Pessoa pessoa){
 		System.out.println(pessoa);
 		
 	return ResponseEntity.created(null).body(pessoa);
@@ -26,14 +32,10 @@ public class PessoaController {
 	}
 	
 	@GetMapping
-	 public ResponseEntity<List<Pessoa>> listar() {
-		Pessoa pessoa1 = new Pessoa();
-		pessoa1.setId(1L);
-		pessoa1.setNome("Joao Ciclano Fulano");
-		pessoa1.setCpf("12345678900");
-		
-		
-		return ResponseEntity.ok(List.of (pessoa1));
+	 public ResponseEntity<List<Object>> listar() {
+		List< Pessoa > pessoas = pessoaService.listar();
+
+		return ResponseEntity.ok(List.of (pessoas, HttpStatus.OK));
 	}
 
 }

@@ -17,8 +17,8 @@ public class TransacaoService implements InterService<Transacao> {
 	@Autowired
 	private TransacaoRepository transacaoRepository;
 	
-	public Transacao salvar(Transacao transacao) {
-		return ((TransacaoService) transacaoRepository).salvar(transacao);
+	public Transacao criar (Transacao transacao) {
+		return ((TransacaoService) transacaoRepository).criar(transacao);
 	}
 	
 	public void delete (Long id) {
@@ -34,47 +34,56 @@ public class TransacaoService implements InterService<Transacao> {
 	}
 
 	@Override
-	public Transacao criar(Transacao objeto) {
-		return null;
+	public void deletar(Long id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public Transacao atualizar(Transacao objeto, Long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Transacao> listarTodos() {
+	public Transacao obter(Long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Transacao listarPorId(Long id) {
-		return null;
-	}
-
-	@Override
-	public Transacao excluir(Long id) {
+	public List<Transacao> listar() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Pessoa criar(Pessoa pessoa) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Pessoa atualizar(Pessoa pessoa, Long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Conta criar(Conta conta) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Conta atualizar(Conta conta, Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Conta verificarConta(Long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

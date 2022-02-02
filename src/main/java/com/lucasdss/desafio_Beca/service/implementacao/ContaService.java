@@ -12,17 +12,17 @@ import com.lucasdss.desafio_Beca.repository.ContaRepository;
 import com.lucasdss.desafio_Beca.service.InterService;
 
 @Service
-public class ContaService implements InterService<Conta> {
+public class ContaService implements InterService<Conta>{
 	
 	
 	@Autowired
-	private  ContaRepository contaRepository;
+	private ContaRepository contaRepository;
 	
 	@Autowired
-	private TransacaoService transService;
+	private TransacaoService transacaoService;
 	
-	public Conta salvar(Conta conta) {
-		return ((ContaService) contaRepository).salvar(conta);
+	public Conta criar (Conta conta) {
+		return ((ContaService) contaRepository). criar (conta);
 	}
 	
 	public void deposita(double quantidade, Long id) {
@@ -43,48 +43,51 @@ public class ContaService implements InterService<Conta> {
 	
 	public List<Transacao> extratoConta(Long id) {
 		Conta conta = verificarConta(id);
-		return transService.buscarContas(conta);
+		return transacaoService.buscarContas(conta);
 		
     }
 
 	@Override
-	public Conta criar(Conta objeto) {
-		return null;
+	public void deletar(Long id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public Conta atualizar(Conta objeto, Long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Conta> listarTodos() {
+	public Conta obter(Long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Conta listarPorId(Long id) {
-		return null;
-	}
-
-	@Override
-	public Conta excluir(Long id) {
+	public List<Conta> listar() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Pessoa criar(Pessoa pessoa) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Pessoa atualizar(Pessoa pessoa, Long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Transacao criar(Transacao transacao) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

@@ -1,6 +1,6 @@
 package com.lucasdss.desafio_Beca.modelo;
 
-//import java.util.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,23 +13,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 
-import lombok.Data;
 
-
-/**
- * @author lsisanto
- *
- */
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
-	
-	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private Long Id;
@@ -43,7 +34,7 @@ public class Pessoa {
 	
 	@JsonSerialize (using = DateSerializer.class)
 	@Column
-	private Data dataNascimento;
+	private Date dataNascimento;
 	
 	@JsonIgnore
 	@OneToMany (mappedBy = "pessoa", fetch = FetchType.EAGER)
@@ -68,22 +59,11 @@ public class Pessoa {
 	public void setCpf (String cpf) {
 		this.cpf = cpf;
 	}
-	public Data getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(Data dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-	
-	public List<Conta> getConta() {
-		return conta;
-	}
-	
-	public void setConta (List <Conta> conta) {
-		this.conta = conta;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 	
 }
