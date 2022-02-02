@@ -1,28 +1,36 @@
 package com.lucasdss.desafio_Beca.modelo;
-
-import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-public class Conta implements Serializable {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Conta {
 	
-	private static final long serialVersionUID = 1L;
-
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long idConta;
 	
+	@OneToOne 
 	private Pessoa pessoa;
-
-	private List<Transacao> transacoes;
 	
+	@Column (nullable = false)
 	private static double saldo;
 	
+	@Column
 	private double limiteSaqueDiario;
 	
+	@Column(name = "flag_ativo")
 	private boolean flagAtivo;
 	
+	@Column
 	private String tipo;
-	
-	private Date dataCriacao;
 	
 
 	public Long getIdConta() {
@@ -31,22 +39,6 @@ public class Conta implements Serializable {
 
 	public void setIdConta(Long idConta) {
 		this.idConta = idConta;
-	}
-
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
-
-	public List<Transacao> getTransacoes() {
-		return transacoes;
-	}
-
-	public void setTransacoes(List<Transacao> transacoes) {
-		this.transacoes = transacoes;
 	}
 
 	public static double getSaldo() {
@@ -69,7 +61,7 @@ public class Conta implements Serializable {
 		return flagAtivo;
 	}
 
-	public void setFlagAtivo(boolean flagAtivo) {
+	public void setFlagAtivo(Boolean flagAtivo) {
 		this.flagAtivo = flagAtivo;
 	}
 
@@ -89,30 +81,7 @@ public class Conta implements Serializable {
 		this.dataCriacao = dataCriacao;
 	}
 
-
-	public int hashCode() {
-		final int linha = 31;
-		int resultado = 1;
-		resultado = linha * resultado + ((idConta == null) ? 0 : idConta.hashCode());
-		return resultado;
+	public static Object findById(Long id) {
+		return null;
 	}
-
-
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;  
-		if (obj == null)
-			return false; 
-		if (getClass() != obj.getClass())
-			return false; 
-		Conta outro = (Conta) obj;
-		if (idConta ==  null) {
-			if (outro.idConta!= null)
-				return false; 
-		} else  if (!idConta.equals(outro.idConta))
-			return false; 
-		return true; 
-	}
-
-
 }
