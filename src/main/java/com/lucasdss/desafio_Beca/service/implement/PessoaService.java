@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.lucasdss.desafio_Beca.modelo.Pessoa;
 
 
-
 @Service
 public class PessoaService {
 
@@ -33,7 +32,6 @@ public class PessoaService {
 		pessoa.setId(id);
 		return ResponseEntity.ok(pessoa);
 	}
-
 	
 	@DeleteMapping("/{id}")
 	 public ResponseEntity<?> deletar (@PathVariable Long id){
@@ -57,7 +55,7 @@ public class PessoaService {
 	}
 	
 	@GetMapping("/{id}")
-	 public ResponseEntity<Pessoa> obter(@PathVariable Long id){
+	 public ResponseEntity<List<Pessoa>> obter(@PathVariable Long id){
 		Pessoa pessoa1 = new Pessoa();
 		pessoa1.setId(1L);
 		pessoa1.setNome("lucas da silva");
@@ -68,9 +66,8 @@ public class PessoaService {
 		pessoa2.setId(1L);
 		pessoa2.setNome("joao de deus");
 		pessoa2.setCpf("98765432110");
-		return ResponseEntity.ok().body(null);
 		
-
+		return ResponseEntity.ok().body(null);
 	}
 
 

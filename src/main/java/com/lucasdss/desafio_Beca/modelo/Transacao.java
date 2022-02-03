@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Transacao {
@@ -18,13 +16,12 @@ public class Transacao {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long idTransacao;
 	
-	@ManyToOne()
+	@OneToOne()
 	private Conta conta;
 	
 	@Column
 	private double valor;
 	
-	@Temporal (TemporalType.TIMESTAMP)
 	@Column
 	private Date dataTransacao;
 	
@@ -38,7 +35,7 @@ public class Transacao {
 	public Conta getConta() {
 		return conta;
 	}
-	public void setConta( Conta  conta ) {
+	public void setConta(Conta  conta ) {
 		this.conta = conta;
 	}
 	public double getValor() {
@@ -53,31 +50,5 @@ public class Transacao {
 	public void setDataTransacao (Date dataTransacao) {
 		this.dataTransacao = dataTransacao;
 	}
-
-//	@Override
-//	public int hashCode() {
-//		final int linha = 31;
-//		int resultado = 1;
-//		resultado = linha * resultado + ((idTransacao == null ) ? 0 : idTransacao.hashCode());
-//		return resultado;
-//	}
-//
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj ==  null )
-//			return false;
-//		if (getClass() != obj . getClass())
-//			return false;
-//		Transacao outro = (Transacao) obj;
-//		if (idTransacao ==  null ) {
-//			if (outro.idTransacao != null)
-//				return false;
-//		} else  if (!idTransacao.equals(outro.idTransacao))
-//			return false;
-//		return true;
-//	}
-//	
-
+	
 }

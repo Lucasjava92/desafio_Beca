@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import com.lucasdss.desafio_Beca.modelo.Conta;
 import com.lucasdss.desafio_Beca.modelo.Transacao;
-
 
 @Service
 public class TransacaoService {
@@ -40,12 +38,12 @@ public class TransacaoService {
 
 	@GetMapping
 	public ResponseEntity<List<Transacao>> listar() {
-		return new ResponseEntity<List<Transacao>>(HttpStatus.OK);
+     return new ResponseEntity<List<Transacao>>(HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Transacao> lisbuscarPorId(@PathVariable Long id) {
-		return new ResponseEntity<>(HttpStatus.OK);
+       return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }
