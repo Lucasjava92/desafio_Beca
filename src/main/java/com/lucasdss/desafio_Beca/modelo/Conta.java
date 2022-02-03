@@ -74,6 +74,31 @@ public class Conta {
 	public static Object findById(Long id) {
 		return null;
 	}
+	
+	@Override
+	public int hashCode () {
+		final int linha = 31;
+		int resultado = 1;
+		resultado = linha * resultado + ((idConta == null) ? 0 : idConta.hashCode());
+		return resultado;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Conta other = (Conta) obj;
+		if (idConta ==  null) {
+			if (other.idConta!= null)
+				return false;
+		} else  if (!idConta.equals(other.idConta))
+			return false;
+		return true;
+	}
 
 
 }

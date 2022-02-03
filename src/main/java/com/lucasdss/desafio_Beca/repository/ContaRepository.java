@@ -2,11 +2,14 @@ package com.lucasdss.desafio_Beca.repository;
 
 
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.lucasdss.desafio_Beca.dtos.ContaDto;
 import com.lucasdss.desafio_Beca.modelo.Conta;
 
 
@@ -26,6 +29,10 @@ public class ContaRepository {
 		@Query("Conta c set c.saldo = c.saldo - ?1 onde c.idConta = ?2 ")
 		void setSaldo(double quant, Long id);
 				
+	}
+
+	public static Collection<ContaDto> findAll() {
+		return null;
 	}
 }
 		 

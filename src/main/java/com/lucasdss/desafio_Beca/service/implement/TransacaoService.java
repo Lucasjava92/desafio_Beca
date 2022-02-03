@@ -31,7 +31,7 @@ public class TransacaoService {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> saldo(@PathVariable Long id) {
+	public ResponseEntity<Long> saldo(@PathVariable Long id) {
 		return ResponseEntity.noContent().build();
 
 	}

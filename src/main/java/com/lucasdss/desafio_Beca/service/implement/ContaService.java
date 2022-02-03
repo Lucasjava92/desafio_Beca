@@ -1,6 +1,9 @@
 package com.lucasdss.desafio_Beca.service.implement;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.lucasdss.desafio_Beca.controller.ContaController;
+import com.lucasdss.desafio_Beca.dtos.ContaDto;
 import com.lucasdss.desafio_Beca.modelo.Conta;
+import com.lucasdss.desafio_Beca.repository.ContaRepository;
 
 
 @Service
@@ -38,6 +43,12 @@ public class ContaService {
 	
 	@GetMapping
 	  public ResponseEntity<Conta> listar(){
+		List<ContaDto> contaDtoLista = new ArrayList<>();
+		ContaRepository.findAll().stream().forEach(
+				conta -> contaDtoLista
+				.add(new ContaDto(conta))
+				);
+		
 		return ResponseEntity.ok().body(null);  
 	}
 	

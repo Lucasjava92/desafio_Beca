@@ -16,6 +16,7 @@ public class Transacao {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long idTransacao;
 	
+	
 	@OneToOne()
 	private Conta conta;
 	
@@ -49,6 +50,31 @@ public class Transacao {
 	}
 	public void setDataTransacao (Date dataTransacao) {
 		this.dataTransacao = dataTransacao;
+	}
+	
+	@Override
+	public int hashCode () {
+		final int linha = 31;
+		int resultado = 1;
+		resultado = linha * resultado + ((idTransacao == null) ? 0 : idTransacao.hashCode());
+		return resultado;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Transacao other = (Transacao) obj;
+		if (idTransacao ==  null) {
+			if (other.idTransacao!= null)
+				return false;
+		} else  if (!idTransacao.equals(other.idTransacao))
+			return false;
+		return true;
 	}
 	
 }
