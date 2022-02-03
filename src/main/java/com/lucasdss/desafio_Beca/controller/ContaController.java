@@ -1,7 +1,12 @@
 package com.lucasdss.desafio_Beca.controller;
 
+<<<<<<< Updated upstream
 
 import java.util.List;
+=======
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+>>>>>>> Stashed changes
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+<<<<<<< Updated upstream
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -20,6 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lucasdss.desafio_Beca.modelo.Conta;
 import com.lucasdss.desafio_Beca.service.InterService;
+=======
+import org.springframework.web.bind.annotation.RestController;
+
+import com.lucasdss.desafio_Beca.modelo.Conta;
+import com.lucasdss.desafio_Beca.modelo.Pessoa;
+
+>>>>>>> Stashed changes
 
 
 
@@ -34,9 +47,14 @@ public class ContaController {
     
     @ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
+<<<<<<< Updated upstream
 	public ResponseEntity<Conta> criar (@RequestBody Conta conta) {
 		//Conta conta = contaService.criar(conta);
 	  return new ResponseEntity<>(conta, HttpStatus.OK);
+=======
+	public ResponseEntity<ContaController> criar (@RequestBody ContaController conta){
+		return ResponseEntity.ok().body(null);
+>>>>>>> Stashed changes
 	}
 	
 	@PutMapping
@@ -61,6 +79,7 @@ public class ContaController {
 		return new ResponseEntity<> (contas, HttpStatus.OK);   
 	}
 	
+<<<<<<< Updated upstream
 	@GetMapping
 	@RequestMapping(method = RequestMethod.GET, path= "saldo/{id}")
 	public ResponseEntity<?> saldo(@PathVariable Long id ){
@@ -72,6 +91,22 @@ public class ContaController {
 	public ResponseEntity<Conta> extratoConta(@PathVariable Long id ){
 		return new ResponseEntity<Conta>(HttpStatus.OK); 
 	
+=======
+	@DeleteMapping("/{id}")
+	 public ResponseEntity<Conta> deletar (@PathVariable Long id){
+		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping
+	  public ResponseEntity<Conta> listar(){
+		Conta conta1 = new Conta();
+		conta1.setIdConta(1L);
+		Conta.getSaldo();
+		conta1.getLimiteSaqueDiario();
+		conta1.getFlagAtivo();
+		
+		return ResponseEntity.ok().body(null);  
+>>>>>>> Stashed changes
 	}
 	
 	@GetMapping 

@@ -1,17 +1,24 @@
 package com.lucasdss.desafio_Beca.modelo;
 
+<<<<<<< Updated upstream
 import java.util.Date;
+=======
+>>>>>>> Stashed changes
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< Updated upstream
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.ManyToOne;
 //import javax.persistence.OneToOne;
 //import com.fasterxml.jackson.annotation.JsonIgnore;
+=======
+import javax.persistence.OneToOne;
+>>>>>>> Stashed changes
 
 @Entity
 public class Conta {
@@ -78,14 +85,6 @@ public class Conta {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-
-	public Date getDataCriacao() {
-		return dataCriacao;
-	}
-
-	public void setDataCriacao(Date dataCriacao) {
-		this.dataCriacao = dataCriacao;
 	}
 
 	public static Object findById(Long id) {
