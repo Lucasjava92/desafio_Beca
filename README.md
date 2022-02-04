@@ -41,3 +41,7 @@ Configure o banco de dados H2 na sua Api
 Implementar na camada service;
 Faça os testes para certificar que sua base de dados está integrado.
 <br>
+<h4> Desafio 5 </h4>
+Aplicar os conceitos de DTO na sua aplicação;
+Faça um relacionamento de tabelas na sua API;
+Criar um novo end-point para retornar um DTO personalizado, agrupamento de várias informações em diferentes tabelas da sua base de dados;
