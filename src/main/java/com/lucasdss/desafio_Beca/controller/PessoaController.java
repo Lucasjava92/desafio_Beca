@@ -13,75 +13,52 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lucasdss.desafio_Beca.modelo.Conta;
-import com.lucasdss.desafio_Beca.modelo.Pessoa;
+import com.lucasdss.desafio_Beca.dtos.request.PessoaRequest;
+import com.lucasdss.desafio_Beca.dtos.response.PessoaResponse;
+import com.lucasdss.desafio_Beca.service.implement.PessoaService;
+
+import lombok.RequiredArgsConstructor;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping ("/pessoa")
 
 public class PessoaController {
 	
+	private final PessoaService pessoaService;
+	
 	@PostMapping
-	 public ResponseEntity<Pessoa>criar(@RequestBody Pessoa pessoa){
-		System.out.println(pessoa);
-		
-	return ResponseEntity.created(null).body(pessoa);
+	 public ResponseEntity<PessoaResponse>criar(@RequestBody PessoaRequest pessoaRequest){
+		PessoaResponse pessoaResponse = pessoaService.criar(pessoaRequest);
+		return ResponseEntity.created(null).body(pessoaResponse);
 	
 	}
 	
 	@PatchMapping("/{id}")
-	 public ResponseEntity<Pessoa> atualizar(@RequestBody Pessoa pessoa,@PathVariable Long id) {
-		pessoa.setId(id);
-		return ResponseEntity.ok(pessoa);
+	 public ResponseEntity<PessoaResponse> atualizar(@RequestBody PessoaRequest pessoaRequest,@PathVariable Long id) {
+		PessoaResponse pessoaResponse = pessoaService.atualizar(pessoaRequest, id);
+		
+		return ResponseEntity.ok(pessoaResponse);
 	}
 	
 	@DeleteMapping("/{id}")
-	 public ResponseEntity<Conta> deletar (@PathVariable Long id){
+	 public ResponseEntity<Void> deletar (@PathVariable Long id){
+		pessoaService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@GetMapping
-	 public ResponseEntity<List<Pessoa>> listar() {
-		Pessoa pessoa1 = new Pessoa();
-		pessoa1.setId(1L);
-		pessoa1.setNome("Lucas da Silva");
-		pessoa1.setCpf("12345678910");
+	 public ResponseEntity <List<PessoaResponse>> listar() {
+	    List<PessoaResponse> listaPessoas = pessoaService.listar();
 		
-		
-		Pessoa pessoa2 = new Pessoa();
-		pessoa2.setId(2L);
-		pessoa2.setNome("Joao de Deus");
-		pessoa2.setCpf("98765432110");
-		
-		Pessoa pessoa3 = new Pessoa();
-		pessoa3.setId(3L);
-		pessoa3.setNome("Maria Julieta");
-		pessoa3.setCpf("65478321101");
-		
-		return ResponseEntity.ok(List.of (pessoa1, pessoa2, pessoa3));
+		return ResponseEntity.ok(listaPessoas);
 	}
 	
 	@GetMapping("/{id}")
-	 public ResponseEntity<List<Pessoa>> obter(@PathVariable Long id){
-		Pessoa pessoa1 = new Pessoa();
-		pessoa1.setId(1L);
-		pessoa1.setNome("lucas da silva");
-		pessoa1.setCpf("12345678910");
+	 public ResponseEntity<PessoaResponse> obter(@PathVariable Long id){
+	    PessoaResponse pessoaResponse = pessoaService.obter(id);
 		
-		
-		Pessoa pessoa2 = new Pessoa();
-		pessoa2.setId(1L);
-		pessoa2.setNome("joao de deus");
-		pessoa2.setCpf("98765432110");
-		
-		
-		Pessoa pessoa3 = new Pessoa();
-		pessoa3.setId(3L);
-		pessoa3.setNome("Maria Julieta");
-		pessoa3.setCpf("65478321101");
-		
-
-		return ResponseEntity.ok(List.of (pessoa1, pessoa2, pessoa3));
+		return ResponseEntity.ok(pessoaResponse);
 	}
 
 }

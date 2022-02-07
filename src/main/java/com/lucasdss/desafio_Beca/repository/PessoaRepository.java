@@ -8,14 +8,12 @@ import  com.lucasdss.desafio_Beca.modelo.Pessoa;
 
 
 @Repository
-public class PessoaRepository {
-	
-	 public interface PessoaService extends JpaRepository<Pessoa, Long> {
+public interface PessoaRepository extends JpaRepository <Pessoa, Long> {
 
 	Optional<Pessoa> findByNome (String nome);
 	Pessoa findByCpf (String cpf);
-	Pessoa salvar(Pessoa pessoa);
+	Pessoa save(Pessoa pessoa);
 	
-	 }
+	 
 
 }

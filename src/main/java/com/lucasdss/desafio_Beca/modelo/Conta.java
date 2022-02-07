@@ -7,7 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import lombok.Data;
 
+@Data
 @Entity
 public class Conta {
 	
@@ -24,7 +26,7 @@ public class Conta {
 	@Column
 	private double limiteSaqueDiario;
 	
-	@Column(name = "flag_ativo")
+	@Column
 	private boolean flagAtivo;
 	
 	@Column

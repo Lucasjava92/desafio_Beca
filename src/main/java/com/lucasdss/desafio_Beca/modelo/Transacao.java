@@ -16,7 +16,6 @@ public class Transacao {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long idTransacao;
 	
-	
 	@OneToOne()
 	private Conta conta;
 	

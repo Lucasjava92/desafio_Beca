@@ -1,73 +1,94 @@
 package com.lucasdss.desafio_Beca.service.implement;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import com.lucasdss.desafio_Beca.dtos.request.PessoaRequest;
+import com.lucasdss.desafio_Beca.dtos.response.PessoaResponse;
+import com.lucasdss.desafio_Beca.mapper.MapperPessoaAtualizacao;
+import com.lucasdss.desafio_Beca.mapper.MapperPessoaRequestToPessoa;
+import com.lucasdss.desafio_Beca.mapper.MapperPessoaToPessoaResponse;
 import com.lucasdss.desafio_Beca.modelo.Pessoa;
+import com.lucasdss.desafio_Beca.repository.PessoaRepository;
 
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Service
-public class PessoaService {
+public class PessoaService { 
+	
 
+	private final PessoaRepository pessoaRepository;
+	private final MapperPessoaRequestToPessoa mapperPessoaRequestToPessoa;
+	private final MapperPessoaToPessoaResponse mapperPessoaToPessoaResponse;
+    private final MapperPessoaAtualizacao mapperPessoaAtualizacao;
 
 	@PostMapping
-	 public ResponseEntity<Pessoa>criar(@RequestBody Pessoa pessoa){
-		System.out.println(pessoa);
+	 public PessoaResponse criar(PessoaRequest pessoaRequest){
+		if(pessoaRequest.getCpf().length() <= 11) {
+			throw new RuntimeException("CPF não pode ter menos de 11 caracteres");
+		}
 		
-	return ResponseEntity.created(null).body(pessoa);
+		Pessoa pessoa = mapperPessoaRequestToPessoa.toModel(pessoaRequest);
+		
+		pessoaRepository.save(pessoa);
+		
+		PessoaResponse pessoaResponse = mapperPessoaToPessoaResponse.toResponse(pessoa);
+		
+	return pessoaResponse;
 	
-	}
-	
-	@PatchMapping("/{id}")
-	 public ResponseEntity<Pessoa> atualizar(@RequestBody Pessoa pessoa,@PathVariable Long id) {
-		pessoa.setId(id);
-		return ResponseEntity.ok(pessoa);
 	}
 	
 	@DeleteMapping("/{id}")
-	 public ResponseEntity<?> deletar (@PathVariable Long id){
-		return ResponseEntity.noContent().build();
+	 public void deletar(Long id) {
+		pessoaRepository.deleteById(id);
+	
 	}
 	
+	
+	@PatchMapping("/{id}")
+	public PessoaResponse atualizar(PessoaRequest pessoaRequest, Long id){
+		Pessoa pessoa = pessoaRepository.findById(id).get();
+		
+		mapperPessoaAtualizacao.atualizar(pessoaRequest, pessoa);
+		
+		pessoaRepository.save(pessoa);
+		
+		return mapperPessoaToPessoaResponse.toResponse(pessoa);
+	}
+	
+	
 	@GetMapping
-	 public ResponseEntity<List<Pessoa>> listar() {
-		Pessoa pessoa1 = new Pessoa();
-		pessoa1.setId(1L);
-		pessoa1.setNome("lucas da silva");
-		pessoa1.setCpf("12345678910");
+	 public List<PessoaResponse> listar() {
+		List<Pessoa> listaPessoas = pessoaRepository.findAll();
+		
+		return listaPessoas
+		       .stream()
+		       .map(mapperPessoaToPessoaResponse::toResponse)
+		       .collect(Collectors.toList());
+
 		
 		
-		Pessoa pessoa2 = new Pessoa();
-		pessoa2.setId(1L);
-		pessoa2.setNome("joao de deus");
-		pessoa2.setCpf("98765432110");
-		
-		return ResponseEntity.ok(List.of (pessoa1, pessoa2));
 	}
 	
 	@GetMapping("/{id}")
-	 public ResponseEntity<List<Pessoa>> obter(@PathVariable Long id){
-		Pessoa pessoa1 = new Pessoa();
-		pessoa1.setId(1L);
-		pessoa1.setNome("lucas da silva");
-		pessoa1.setCpf("12345678910");
+	 public PessoaResponse obter(@PathVariable Long id){
+		Pessoa pessoa = pessoaRepository.findById(id).get();
+		
+		if(pessoa == null) {
+			throw new RuntimeException("Pessoa com esse Id NÃO ENCONTRADO!");
+		}
 		
 		
-		Pessoa pessoa2 = new Pessoa();
-		pessoa2.setId(1L);
-		pessoa2.setNome("joao de deus");
-		pessoa2.setCpf("98765432110");
-		
-		return ResponseEntity.ok().body(null);
+		return mapperPessoaToPessoaResponse.toResponse(pessoa);
 	}
 
 

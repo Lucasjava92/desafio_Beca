@@ -9,12 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+import javax.persistence.UniqueConstraint;
+
 
 @Entity
-@Table
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = "cpf")})
 public class Pessoa {
 	
 	@Id
@@ -23,13 +22,13 @@ public class Pessoa {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private String nome;
 	
-	@Size (min = 11, max = 11)
-	@Column (unique = true)
+	
+	@Column (unique = true, nullable = false)
 	private String cpf;
 	
-	@JsonSerialize (using = DateSerializer.class)
 	@Column
 	private Date dataNascimento;
+	
 	
 	public Long getId() {
 		return Id;
