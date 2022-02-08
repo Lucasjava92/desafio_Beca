@@ -8,6 +8,7 @@ import com.lucasdss.desafio_Beca.modelo.Pessoa;
 
 @Mapper
 public interface MapperPessoaAtualizacao {
+	
 	public void atualizar(PessoaRequest pessoaRequest, @MappingTarget Pessoa pessoa);
 
 }

@@ -6,7 +6,7 @@ import org.mapstruct.MappingTarget;
 import com.lucasdss.desafio_Beca.dtos.request.ContaRequest;
 import com.lucasdss.desafio_Beca.modelo.Conta;
 
-@Mapper
+@Mapper 
 public interface MapperContaAtualizacao {
 	
 	public void atualizar(ContaRequest contaRequest, @MappingTarget Conta conta);

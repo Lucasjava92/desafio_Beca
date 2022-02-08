@@ -2,7 +2,6 @@ package com.lucasdss.desafio_Beca.modelo;
 
 import java.util.Date;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,10 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import org.hibernate.validator.constraints.Length;
 
 
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = "cpf")})
+
 public class Pessoa {
 	
 	@Id
@@ -22,12 +23,13 @@ public class Pessoa {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private String nome;
 	
-	
+	@Length ( min = 11 , max = 11 )
 	@Column (unique = true, nullable = false)
 	private String cpf;
 	
 	@Column
 	private Date dataNascimento;
+
 	
 	
 	public Long getId() {

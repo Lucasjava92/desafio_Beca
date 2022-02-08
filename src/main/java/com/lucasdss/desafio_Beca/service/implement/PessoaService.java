@@ -34,7 +34,7 @@ public class PessoaService {
 	@PostMapping
 	 public PessoaResponse criar(PessoaRequest pessoaRequest){
 		if(pessoaRequest.getCpf().length() <= 11) {
-			throw new RuntimeException("CPF não pode ter menos de 11 caracteres");
+			throw new Error("CPF não pode ter menos de 11 caracteres");
 		}
 		
 		Pessoa pessoa = mapperPessoaRequestToPessoa.toModel(pessoaRequest);

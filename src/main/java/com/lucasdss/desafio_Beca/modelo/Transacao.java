@@ -16,7 +16,7 @@ public class Transacao {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long idTransacao;
 	
-	@OneToOne()
+	@OneToOne
 	private Conta conta;
 	
 	@Column
@@ -24,6 +24,7 @@ public class Transacao {
 	
 	@Column
 	private Date dataTransacao;
+	
 	
 	
 	public Long getIdTransacao() {

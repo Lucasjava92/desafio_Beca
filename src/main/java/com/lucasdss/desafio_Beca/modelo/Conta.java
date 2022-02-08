@@ -1,11 +1,13 @@
 package com.lucasdss.desafio_Beca.modelo;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
 
 import lombok.Data;
 
@@ -31,6 +33,7 @@ public class Conta {
 	
 	@Column
 	private String tipo;
+	
 	
 
 	public Long getIdConta() {

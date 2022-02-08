@@ -3,6 +3,8 @@ package com.lucasdss.desafio_Beca.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +30,7 @@ public class PessoaController {
 	private final PessoaService pessoaService;
 	
 	@PostMapping
-	 public ResponseEntity<PessoaResponse>criar(@RequestBody PessoaRequest pessoaRequest){
+	 public ResponseEntity<PessoaResponse>criar(@RequestBody @Valid PessoaRequest pessoaRequest){
 		PessoaResponse pessoaResponse = pessoaService.criar(pessoaRequest);
 		return ResponseEntity.created(null).body(pessoaResponse);
 	
