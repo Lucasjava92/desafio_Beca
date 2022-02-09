@@ -34,6 +34,7 @@ Crie as classes de service na sua API;
 Implementar interfaces e declara os metódos que irá ser utilizadas;
 Faça a integração com a camada de controller;
 <br>
+<img width="933" alt="Captura de tela 2022-02-02 121715" src="https://user-images.githubusercontent.com/86928030/152342448-46242deb-2b1f-402d-aaba-0739cbaea0bf.png">
 <h4>Desafio 4</h4>
 Crie as classes de repository na sua API;
 Configure o banco de dados H2 na sua Api
@@ -41,3 +42,18 @@ Configure o banco de dados H2 na sua Api
 Implementar na camada service;
 Faça os testes para certificar que sua base de dados está integrado.
 <br>
+<img width="672" alt="Captura de tela 2022-02-03 002914" src="https://user-images.githubusercontent.com/86928030/152343009-02930832-ec5a-4feb-8bda-8cddaadb1c46.png">
+<h4> Desafio 5 </h4>
+Aplicar os conceitos de DTO na sua aplicação;
+Faça um relacionamento de tabelas na sua API;
+Criar um novo end-point para retornar um DTO personalizado, agrupamento de várias informações em diferentes tabelas da sua base de dados;
+<h4> Desafio 6 </h4>
+Crie uma nova branch em seu repositório com o nome “desafio6”, a partir da branch “main” como base, atualize todas as modificações feitas na sua api nesta banch no documento README.md.
+Adicione validações de dados na sua API;
+Adicione Mapper em sua aplicação para a conversão de objetos;
+Implementar Lombook em sua aplicação.
+<h4> Desafio 7 </h4>
+Faça o tratamento das exception utilizando try catch e si necessário finally;
+Agora faça o tratamento utilizando throw e @ExceptionHandler;
+Aproveitando o método criado com @ExceptionHandler crie sua própria classe para tratamento de exceptions utilizando @ControllerAdvice;
+Realize novos testes, verifique o resultado final e escreva sua própria conclusão sobre exceptions.
