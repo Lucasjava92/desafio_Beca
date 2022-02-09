@@ -35,11 +35,3 @@ Implementar interfaces e declara os metódos que irá ser utilizadas;
 Faça a integração com a camada de controller;
 <br>
 <img width="933" alt="Captura de tela 2022-02-02 121715" src="https://user-images.githubusercontent.com/86928030/152342448-46242deb-2b1f-402d-aaba-0739cbaea0bf.png">
-<h4>Desafio 4</h4>
-Crie as classes de repository na sua API;
-Configure o banco de dados H2 na sua Api
-(Use a configuração: spring.datasource.url=jdbc:h2:mem:testdb);
-Implementar na camada service;
-Faça os testes para certificar que sua base de dados está integrado.
-<br>
-<img width="672" alt="Captura de tela 2022-02-03 002914" src="https://user-images.githubusercontent.com/86928030/152343009-02930832-ec5a-4feb-8bda-8cddaadb1c46.png">
