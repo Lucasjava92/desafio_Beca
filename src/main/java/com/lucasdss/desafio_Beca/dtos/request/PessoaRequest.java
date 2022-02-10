@@ -11,13 +11,13 @@ import lombok.Data;
 public class PessoaRequest {
 	
 	private Long id;
-	private String nome;
 	
 	@NotBlank(message = "Este campo deve ser preenchido")
     @Size(min = 12, message = "Descrição do CPF não pode ser acima de 12 caracteres")
 	private String cpf;
+	
     private Date dataNascimento;
-
+    private String nome;
     
     
 

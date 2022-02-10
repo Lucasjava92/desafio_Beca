@@ -20,8 +20,8 @@ import com.lucasdss.desafio_Beca.service.implement.ContaService;
 
 
 @RestController
-@RequestMapping("/contas")
 @RequiredArgsConstructor
+@RequestMapping("/contas")
 public class ContaController {
 	
 	private final ContaService contaService;
